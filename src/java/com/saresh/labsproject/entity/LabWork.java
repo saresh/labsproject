@@ -5,10 +5,21 @@
  */
 package com.saresh.labsproject.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  *
  * @author saresh
  */
+@Entity
+@Table(name = "LabWork")
 public class LabWork {    
     private int id;
     private String title;
@@ -16,6 +27,10 @@ public class LabWork {
     private Subject subject;
     private String filepath;
     
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -24,6 +39,7 @@ public class LabWork {
         this.id = id;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -32,6 +48,7 @@ public class LabWork {
         this.title = title;
     }
 
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -40,6 +57,8 @@ public class LabWork {
         this.description = description;
     }
 
+    @ManyToOne
+    @JoinColumn(name="subject_id")
     public Subject getSubject() {
         return subject;
     }
@@ -48,6 +67,7 @@ public class LabWork {
         this.subject = subject;
     }
 
+    @Column(name = "file_path")
     public String getFilepath() {
         return filepath;
     }

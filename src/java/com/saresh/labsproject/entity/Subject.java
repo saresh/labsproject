@@ -6,20 +6,39 @@
 package com.saresh.labsproject.entity;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author saresh
  */
+@Entity
+@Table(name = "Subject")
 public class Subject {    
     private int id;
     private String title;
     private String description;
     private List<LabWork> labs = new ArrayList<>();
     private User creator;
-    
+    private List<User> usersAssigned = new ArrayList<>();
+            
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -28,6 +47,7 @@ public class Subject {
         this.id = id;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -36,6 +56,7 @@ public class Subject {
         this.title = title;
     }
 
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -44,6 +65,7 @@ public class Subject {
         this.description = description;
     }
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
     public List<LabWork> getLabs() {
         return labs;
     }
@@ -52,6 +74,8 @@ public class Subject {
         this.labs = labs;
     }
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
     public User getCreator() {
         return creator;
     }
@@ -59,6 +83,21 @@ public class Subject {
     public void setCreator(User creator) {
         this.creator = creator;
     }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "Subject_User_Assigned", joinColumns = { 
+                    @JoinColumn(name = "subject_id", nullable = false, updatable = false) }, 
+                    inverseJoinColumns = { @JoinColumn(name = "user_id", 
+					nullable = false, updatable = false) })
+    public List<User> getUsersAssigned() {
+        return usersAssigned;
+    }
+
+    public void setUsersAssigned(List<User> usersAssigned) {
+        this.usersAssigned = usersAssigned;
+    }
+    
+    
     
     
 }
