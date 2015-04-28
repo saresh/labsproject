@@ -6,7 +6,6 @@
 package com.saresh.labsproject.entity;
 
 import java.util.List;
-<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,18 +16,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
-=======
->>>>>>> origin/master
+
 
 /**
  *
  * @author saresh
  */
-<<<<<<< HEAD
+
 @Entity
 @Table(name = "User")
-=======
->>>>>>> origin/master
 public class User {
     private int id;
     private String login;
@@ -36,13 +32,10 @@ public class User {
     private List<Subject> subjectsCreated;
     private List<Subject> subjectsAssigned;
 
-<<<<<<< HEAD
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
-=======
->>>>>>> origin/master
     public int getId() {
         return id;
     }
@@ -51,10 +44,7 @@ public class User {
         this.id = id;
     }
 
-<<<<<<< HEAD
     @Column(name = "login")
-=======
->>>>>>> origin/master
     public String getLogin() {
         return login;
     }
@@ -63,10 +53,7 @@ public class User {
         this.login = login;
     }
 
-<<<<<<< HEAD
     @Column(name = "password")
-=======
->>>>>>> origin/master
     public String getPassword() {
         return password;
     }
@@ -75,10 +62,7 @@ public class User {
         this.password = password;
     }
 
-<<<<<<< HEAD
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-=======
->>>>>>> origin/master
     public List<Subject> getSubjectsCreated() {
         return subjectsCreated;
     }
@@ -87,11 +71,8 @@ public class User {
         this.subjectsCreated = subjectsCreated;
     }
 
-<<<<<<< HEAD
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usersAssigned")
     @OrderBy("id desc")
-=======
->>>>>>> origin/master
     public List<Subject> getSubjectsAssigned() {
         return subjectsAssigned;
     }

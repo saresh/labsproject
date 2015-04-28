@@ -5,7 +5,6 @@
  */
 package com.saresh.labsproject.entity;
 
-<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,17 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
-=======
->>>>>>> origin/master
 /**
  *
  * @author saresh
  */
-<<<<<<< HEAD
 @Entity
 @Table(name = "LabWork")
-=======
->>>>>>> origin/master
 public class LabWork {    
     private int id;
     private String title;
@@ -33,13 +27,10 @@ public class LabWork {
     private Subject subject;
     private String filepath;
     
-<<<<<<< HEAD
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
-=======
->>>>>>> origin/master
     public int getId() {
         return id;
     }
@@ -48,10 +39,7 @@ public class LabWork {
         this.id = id;
     }
 
-<<<<<<< HEAD
     @Column(name = "title")
-=======
->>>>>>> origin/master
     public String getTitle() {
         return title;
     }
@@ -60,10 +48,7 @@ public class LabWork {
         this.title = title;
     }
 
-<<<<<<< HEAD
     @Column(name = "description")
-=======
->>>>>>> origin/master
     public String getDescription() {
         return description;
     }
@@ -72,11 +57,8 @@ public class LabWork {
         this.description = description;
     }
 
-<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name="subject_id")
-=======
->>>>>>> origin/master
     public Subject getSubject() {
         return subject;
     }
@@ -85,10 +67,7 @@ public class LabWork {
         this.subject = subject;
     }
 
-<<<<<<< HEAD
     @Column(name = "file_path")
-=======
->>>>>>> origin/master
     public String getFilepath() {
         return filepath;
     }
