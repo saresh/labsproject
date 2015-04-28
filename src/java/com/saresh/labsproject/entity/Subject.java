@@ -25,6 +25,7 @@ import org.hibernate.annotations.GenericGenerator;
  *
  * @author saresh
  */
+
 @Entity
 @Table(name = "Subject")
 public class Subject {    
@@ -39,6 +40,7 @@ public class Subject {
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
+
     public int getId() {
         return id;
     }
@@ -74,6 +76,7 @@ public class Subject {
         this.labs = labs;
     }
 
+
     @ManyToOne
     @JoinColumn(name="user_id")
     public User getCreator() {
@@ -95,9 +98,5 @@ public class Subject {
 
     public void setUsersAssigned(List<User> usersAssigned) {
         this.usersAssigned = usersAssigned;
-    }
-    
-    
-    
-    
+    }    
 }
