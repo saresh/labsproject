@@ -19,7 +19,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -27,7 +26,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
-@Table(name = "Subject")
+@Table(name = "subject")
 public class Subject {    
     private int id;
     private String title;
@@ -37,10 +36,8 @@ public class Subject {
     private List<User> usersAssigned = new ArrayList<>();
             
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator="increment")   
     @Column(name="id")
-
     public int getId() {
         return id;
     }
@@ -78,7 +75,7 @@ public class Subject {
 
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_creator_id")
     public User getCreator() {
         return creator;
     }

@@ -15,7 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 
 /**
@@ -24,7 +23,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
     private int id;
     private String login;
@@ -33,8 +32,7 @@ public class User {
     private List<Subject> subjectsAssigned;
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator="increment")    
     @Column(name="id")
     public int getId() {
         return id;

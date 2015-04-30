@@ -12,14 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author saresh
  */
 @Entity
-@Table(name = "LabWork")
+@Table(name = "labwork")
 public class LabWork {    
     private int id;
     private String title;
@@ -29,7 +28,6 @@ public class LabWork {
     
     @Id
     @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
     public int getId() {
         return id;
