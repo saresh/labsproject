@@ -30,6 +30,11 @@
                 <value>hibernate.cfg.xml</value>
             </list>
         </property>
+        <property name="packagesToScan">
+            <list>
+                <value>com.saresh.labsproject.entity</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>                
