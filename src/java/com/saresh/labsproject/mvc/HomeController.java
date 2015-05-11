@@ -6,9 +6,15 @@
 
 package com.saresh.labsproject.mvc;
 
+
+import com.saresh.labsproject.dao.factory.DaoFactory;
+import com.saresh.labsproject.dao.impl.SubjectDao;
+import com.saresh.labsproject.dao.interfaces.ISubjectDao;
+import com.saresh.labsproject.entity.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -17,10 +23,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
     
+    @Autowired
+    private ISubjectDao subjectDao;
+            
     @RequestMapping ({"/", "/home", "/main"})
     public String showHomePage(Model model){
         
+        Subject sbj = subjectDao.findSubject(1);
         model.addAttribute("welcometext", "Hi there, saresh");
+        model.addAttribute("subject", sbj);
         return "home";        
     }
 }

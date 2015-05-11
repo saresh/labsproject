@@ -21,7 +21,7 @@
         p:username="root"
         p:password="root" />
     
-    
+        
     <bean id="sessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -40,6 +40,12 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>                
             </props>
         </property>
+    </bean>
+    
+    <bean id="subjectDao" class="com.saresh.labsproject.dao.impl.SubjectDao">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
+        </constructor-arg>
     </bean>
     
 

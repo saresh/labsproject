@@ -6,10 +6,12 @@
 
 package com.saresh.labsproject.dao.factory;
 
+import com.saresh.labsproject.dao.impl.SubjectDao;
+import com.saresh.labsproject.dao.interfaces.ISubjectDao;
+
 /**
  *
  * @author saresh
  */
-public class DaoFactory {
-    
+public class DaoFactory {    
 }

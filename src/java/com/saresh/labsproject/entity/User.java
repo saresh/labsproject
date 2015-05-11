@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 
 /**
@@ -32,7 +33,8 @@ public class User {
     private List<Subject> subjectsAssigned;
 
     @Id
-    @GeneratedValue(generator="increment")    
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
     public int getId() {
         return id;
@@ -60,7 +62,7 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "creator")
     public List<Subject> getSubjectsCreated() {
         return subjectsCreated;
     }
@@ -70,7 +72,6 @@ public class User {
     }
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "usersAssigned")
-    @OrderBy("id desc")
     public List<Subject> getSubjectsAssigned() {
         return subjectsAssigned;
     }
