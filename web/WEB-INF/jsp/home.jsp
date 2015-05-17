@@ -4,6 +4,7 @@
     Author     : saresh
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
  
@@ -21,7 +22,10 @@
                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</P>
             
-            <h3>${subject.title} - ${subject.description}</h3>
+            <c:forEach var="subject" items="${subjects}">
+                <h3>${subject.title} - ${subject.description}</h3>
+            </c:forEach>
+            
         </div>
  
  

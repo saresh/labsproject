@@ -9,6 +9,7 @@ package com.saresh.labsproject.dao.impl;
 import com.saresh.labsproject.dao.interfaces.ISubjectDao;
 import com.saresh.labsproject.entity.Subject;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class SubjectDao implements ISubjectDao{
-    
+    private static final String SELECT_ALL = "from Subject";
+    private static final String SELECT_BY_USER_CREATED_ID = "from Subject where user_creator_id = :user_id";
     private SessionFactory sessionFactory;
     
     @Autowired
@@ -42,12 +44,17 @@ public class SubjectDao implements ISubjectDao{
 
     @Override
     public List<Subject> findAllSubjects() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query query = currentSession().createQuery(SELECT_ALL);
+        List<Subject> resultList = query.list();
+        return resultList;
     }
 
     @Override
     public List<Subject> findSubjectByUserId(int userId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = currentSession().createQuery(SELECT_BY_USER_CREATED_ID);
+        query.setParameter("user_id", userId);
+        List<Subject> resultList = query.list();
+        return resultList;
     }
     
 }

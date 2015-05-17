@@ -11,6 +11,7 @@ import com.saresh.labsproject.dao.factory.DaoFactory;
 import com.saresh.labsproject.dao.impl.SubjectDao;
 import com.saresh.labsproject.dao.interfaces.ISubjectDao;
 import com.saresh.labsproject.entity.Subject;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +30,9 @@ public class HomeController {
     @RequestMapping ({"/", "/home", "/main"})
     public String showHomePage(Model model){
         
-        Subject sbj = subjectDao.findSubject(1);
+        List<Subject> subjects = subjectDao.findSubjectByUserId(1);
         model.addAttribute("welcometext", "Hi there, saresh");
-        model.addAttribute("subject", sbj);
+        model.addAttribute("subjects", subjects);
         return "home";        
     }
 }
