@@ -9,7 +9,9 @@ package com.saresh.labsproject.mvc;
 
 import com.saresh.labsproject.dao.factory.DaoFactory;
 import com.saresh.labsproject.dao.impl.SubjectDao;
+import com.saresh.labsproject.dao.interfaces.ILabWorkDao;
 import com.saresh.labsproject.dao.interfaces.ISubjectDao;
+import com.saresh.labsproject.entity.LabWork;
 import com.saresh.labsproject.entity.Subject;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -25,14 +27,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class HomeController {
     
     @Autowired
-    private ISubjectDao subjectDao;
+    private ILabWorkDao labWorkDao;
+    
+    
             
     @RequestMapping ({"/", "/home", "/main"})
     public String showHomePage(Model model){
         
-        List<Subject> subjects = subjectDao.findSubjectByUserId(1);
+        List<LabWork> labs = labWorkDao.findLabWorksBySubjectId(1);
         model.addAttribute("welcometext", "Hi there, saresh");
-        model.addAttribute("subjects", subjects);
+        model.addAttribute("labs", labs);
         return "home";        
     }
 }

@@ -48,6 +48,14 @@
         </constructor-arg>
     </bean>
     
+    <bean id="labWorkDao" class="com.saresh.labsproject.dao.impl.LabWorkDao">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
+        </constructor-arg>
+    </bean>
+    
+    
+    
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) 
     -->

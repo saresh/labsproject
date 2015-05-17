@@ -6,10 +6,18 @@
 
 package com.saresh.labsproject.dao.interfaces;
 
+import com.saresh.labsproject.entity.LabWork;
+import java.util.List;
+
 /**
  *
  * @author saresh
  */
 public interface ILabWorkDao {
+    
+    LabWork findLabWorkById(int id);
+    
+    List<LabWork> findLabWorksBySubjectId(int subjectId);
+    
     
 }

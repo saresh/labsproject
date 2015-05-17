@@ -67,7 +67,7 @@ public class LabWork {
         this.subject = subject;
     }
 
-    @Column(name = "file_path")
+    @Column(name = "filepath")
     public String getFilepath() {
         return filepath;
     }
