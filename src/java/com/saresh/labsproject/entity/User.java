@@ -5,7 +5,9 @@
  */
 package com.saresh.labsproject.entity;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,8 +31,10 @@ public class User {
     private int id;
     private String login;
     private String password;
+    private boolean enabled;
     private List<Subject> subjectsCreated;
     private List<Subject> subjectsAssigned;
+    private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
     @Id
     @GeneratedValue(generator="increment")
@@ -61,6 +65,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    @Column(name = "enabled")
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "creator")
     public List<Subject> getSubjectsCreated() {
@@ -79,6 +92,17 @@ public class User {
     public void setSubjectsAssigned(List<Subject> subjectsAssigned) {
         this.subjectsAssigned = subjectsAssigned;
     }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRole) {
+        this.userRoles = userRole;
+    }
+    
+    
     
     
 }
