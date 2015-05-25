@@ -52,7 +52,12 @@ public class UserDao implements IUserDao {
         query.setParameter("login", login);
         query.setParameter("password", password);
         List<User> resultList = query.list();
-        return resultList.get(0);
+        
+        if (resultList.size() > 0) {
+            return resultList.get(0);
+	} else {
+            return null;
+	}        
     }
 
     @Override
@@ -70,6 +75,19 @@ public class UserDao implements IUserDao {
         }
         
         return result;
+    }
+
+    @Override
+    public User findUser(String login) {
+        Query query = currentSession().createQuery(SELECT_USER_BY_LOGIN);
+        query.setParameter("login", login);
+        List<User> resultList = query.list();
+        
+        if (resultList.size() > 0) {
+            return resultList.get(0);
+	} else {
+            return null;
+	}        
     }
     
 }

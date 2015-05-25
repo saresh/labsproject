@@ -17,6 +17,8 @@ public interface IUserDao {
 
     User findUser(int id);
     
+    User findUser(String login);
+    
     User findUser(String login, String password);
     
     boolean isUserExist(String login);

@@ -28,6 +28,10 @@
     <bean id = "transactionManager" class = "org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name = "sessionFactory" ref = "sessionFactory" />
     </bean>
+    
+    <bean id="LPUserDetailsService" 
+                class="com.saresh.labsproject.security.LPUserDetailsService">
+    </bean>
         
     
     
